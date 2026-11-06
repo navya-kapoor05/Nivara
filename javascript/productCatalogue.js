@@ -20,6 +20,11 @@ const products =[
         name: "Designer Wallpapers",
         price: 1200,
         available: true
+    },
+    {
+        name: "Premium Curtains",
+        price: 3000,
+        available: true
     }
 ];
 
@@ -36,3 +41,15 @@ const unavailableProducts = products.filter(product => product.available === fal
 console.log(unavailableProducts.length);
 
 unavailableProducts.forEach(product => console.log(`${product.name} - ₹${product.price}`));
+
+const searchTerm = "Bl";
+const minBudget = 1000;
+const maxBudget = 3000;
+
+const searchResults = products.filter(product => (product.name.toLowerCase().includes(searchTerm.toLowerCase()) && (product.available && product.price >= minBudget && product.price <= maxBudget)));
+if(searchResults.length > 0){
+
+    searchResults.forEach(product => console.log(`Product found: ${product.name} Price: ₹${product.price}`));
+}else{
+    console.log("No products found!");
+}
