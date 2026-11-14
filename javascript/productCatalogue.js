@@ -53,3 +53,57 @@ if(searchResults.length > 0){
 }else{
     console.log("No products found!");
 }
+const curtainResults = products.filter(product => {
+    if(product.name.toLowerCase().includes("curtains")){
+        return true;
+    }
+    return false;
+});
+
+curtainResults.forEach(product => console.log(`${product.name} - ₹${product.price}`));
+
+const sortedProducts = [...products].sort((a,b) => a.price - b.price);
+sortedProducts.forEach(product => console.log(`${product.name} - ₹${product.price}`));
+
+const productIndex = products.findIndex(product => product.name === "Sofa");
+if(productIndex !== -1){
+    products[productIndex].price = 2800;
+    console.log(`${products[productIndex].name} - ₹${products[productIndex].price}`);
+}
+else{
+    console.log(`Product not found!`);
+}
+
+const newProduct = {
+    name : "Sofa",
+    price: 2500,
+    available: true
+}
+products.push(newProduct);
+const newProduct2 = {
+    name : "Velvet Curtains",
+    price: 3500,
+    available: true
+}
+products.push(newProduct2);
+products.forEach(product => console.log(`${product.name} - ₹${product.price}`));
+const productsIndex = products.findIndex(product => product.name === "Sofa");
+if(productsIndex !== -1){
+    products.splice(productsIndex,1);
+    console.log("Product removed successfully!");
+}
+else{
+    console.log("Product not found!");
+}
+products.forEach(product => console.log(`${product.name} - ₹${product.price}`));
+console.log(`${products.length}`);
+
+function calculateFinalPrice(price){
+    return price+200;
+}
+console.log(calculateFinalPrice(2500));
+
+function addProduct(product){
+    products.push(product);
+    console.log("Product added successfully!");
+}
