@@ -104,6 +104,10 @@ function calculateFinalPrice(price){
 console.log(calculateFinalPrice(2500));
 
 function addProduct(product){
+    if(!product || typeof product.name !== "string" || !product.name.trim() || !Number.isFinite(product.price) ||product.price<=0 || typeof product.available !== "boolean"){
+        console.log("Invalid product details!");
+        return;
+    }
     products.push(product);
     console.log("Product added successfully!");
 }
@@ -143,5 +147,12 @@ function updateProductPrice(productName, newPrice){
     }
 }
 updateProductPrice("Luxury Blinds", 4800);
+addProduct({ name: "   ", price: 2000, available: true });
+
+addProduct({ name: "Silk Curtains", price: "hello", available: true });
+
+addProduct({ name: "Cotton Bedsheets", price: 2200, available: true });
+
+addProduct();
 
 console.log(products);
