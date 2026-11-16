@@ -134,12 +134,14 @@ searchProducts("BLINDS");
 searchProducts("sofa");
 
 function updateProductPrice(productName, newPrice){
-    const findIndex = products.findIndex(product => product.name === productName);
-    if(findIndex !== -1){
-        products[findIndex].price = newPrice;
+    const productIndex = products.findIndex(product => product.name === productName);
+    if(productIndex !== -1){
+        products[productIndex].price = newPrice;
         console.log("Product price updated successfully!");
     }else{
         console.log("Product not found!");
     }
 }
 updateProductPrice("Luxury Blinds", 4800);
+
+console.log(products);
